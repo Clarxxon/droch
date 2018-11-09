@@ -2,7 +2,7 @@
 
 const fs = require('fs'),
     path = require('path'),
-    http = require('http');
+    http = require('http'),
     cors = require('cors');
 
 const process = require('process');
