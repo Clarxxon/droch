@@ -735,7 +735,7 @@ paths:
           description: Invalid URL
     x-swagger-router-controller: Client
   /getClient:
-    options:
+    post:
       tags:
         - client
       summary: Создать клиента и получить его ID
