@@ -3,6 +3,7 @@
 const fs = require('fs'),
     path = require('path'),
     http = require('http');
+    cors = require('cors');
 
 const process = require('process');
 const appConnect = require('connect')();
@@ -47,7 +48,7 @@ function connect() {
     });
 }
 
-appConnect.use(function (req, res, next) {
+/*appConnect.use(function (req, res, next) {
 
 // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -65,10 +66,10 @@ appConnect.use(function (req, res, next) {
 // Pass to next layer of middleware
     next();
 });
-
+*/
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
-
+    appConnect.use(cors({credentials: true, origin: true}));
     // Interpret Swagger resources and attach metadata to request - must be first in swagger-tools middleware chain
     appConnect.use(middleware.swaggerMetadata());
 
